@@ -12,7 +12,7 @@ public class CarFactory {
     public static Car positiveCar(){
         return Car.builder()
                 .serialNumber(faker.vehicle().licensePlate())
-                .city("Beersheva")
+                .city("Haifa")
                 .manufacture(faker.vehicle().manufacturer())
                 .model(faker.vehicle().model())
                 .year(Integer .toString(faker.number().numberBetween(0,
