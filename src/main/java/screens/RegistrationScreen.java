@@ -23,6 +23,7 @@ public class RegistrationScreen extends BaseScreen{
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\'com.telran.ilcarro:id/regBtn\']")
     WebElement btnYalla;
 
+
     public void typeRegistrationForm(User user) {
         inputName.sendKeys(user.getFirstName());
         inputLastName.sendKeys(user.getLastName());
@@ -38,3 +39,6 @@ public class RegistrationScreen extends BaseScreen{
         btnYalla.click();
     }
 }
+
+
+ //
