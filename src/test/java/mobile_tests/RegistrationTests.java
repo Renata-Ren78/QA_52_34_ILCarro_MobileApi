@@ -50,6 +50,43 @@ public class RegistrationTests extends TestBase{
 
     }
 
+    // HW_17_01
+    @Test
+    public void registrationEmptyAllFieldsNegativeTest(){
+        user.setFirstName("");
+        user.setLastName("");
+        user.setUsername("");
+        user.setPassword("");
+        registrationScreen.typeRegistrationForm(user);
+        registrationScreen.clickCheckBoxIAgree();
+        registrationScreen.clickBtnYalla();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+    // HW_17_02
+    @Test
+    public void registrationEmptyAllFieldsAndCheckBoxNegativeTest(){
+        user.setFirstName("");
+        user.setLastName("");
+        user.setUsername("");
+        user.setPassword("");
+        registrationScreen.typeRegistrationForm(user);
+        registrationScreen.clickBtnYalla();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+    // HW_17_03
+    @Test
+    public void registrationEmptyCheckBoxNegativeTest(){
+        registrationScreen.typeRegistrationForm(user);
+        registrationScreen.clickBtnYalla();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+
 
 
 }

@@ -4,6 +4,7 @@ import dto.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import screens.ErrorScreen;
 import screens.LoginScreen;
 import screens.SearchScreen;
 import screens.SplashScreen;
@@ -33,7 +34,47 @@ public class LoginTests extends TestBase{
         loginScreen.clickBtnYallaLogin();
         Assert.assertTrue(searchScreen
                 .validatePopUpLoginSuccess("Login success!"));
+    }
 
+    // HW 17_01
+    @Test
+    public void loginEmptyAllFieldsNegativeTest(){
+        user.setUsername("");
+        user.setPassword("");
+        loginScreen.typeLoginForm(user);
+        loginScreen.clickBtnYallaLogin();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+    // HW 17_02
+    @Test
+    public void loginEmptyUsernameFieldNegativeTest(){
+        user.setUsername("");
+        loginScreen.typeLoginForm(user);
+        loginScreen.clickBtnYallaLogin();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+    // HW 17_03
+    @Test
+    public void loginEmptyPasswordFieldNegativeTest(){
+        user.setPassword("");
+        loginScreen.typeLoginForm(user);
+        loginScreen.clickBtnYallaLogin();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("All fields must be filled and agree terms"));
+    }
+
+    // HW 17_04
+    @Test
+    public void loginUnregisteredUserNegativeTest(){
+        user.setUsername("reenatae_test_new@gmail.com");
+        loginScreen.typeLoginForm(user);
+        loginScreen.clickBtnYallaLogin();
+        Assert.assertTrue(new ErrorScreen(driver)
+                .validateErrorMessage("Login or Password incorrect"));
     }
 
 

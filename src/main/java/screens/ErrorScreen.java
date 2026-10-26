@@ -13,6 +13,7 @@ public class ErrorScreen extends BaseScreen{
     WebElement errorMessage;
 
 
+
     public boolean validateErrorMessage(String text){
         return isTextInElementPresent(errorMessage, text);
     }
