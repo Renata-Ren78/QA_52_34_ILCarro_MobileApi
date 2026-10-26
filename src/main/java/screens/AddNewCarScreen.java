@@ -40,6 +40,16 @@ public class AddNewCarScreen extends BaseScreen {
     @AndroidFindBy(id = "com.telran.ilcarro:id/addCarBtn")
     WebElement btnAddCar;
 
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Car was added!']")
+    WebElement carWasAddedMessage;
+
+
+    public boolean validateCarWasAddedMessage(String  text){
+        return isTextInElementPresent(carWasAddedMessage,text);
+    }
+
+
+
 
     public void typeAddNewCarForm(Car car) {
         inputSerialNumber.sendKeys(car.getSerialNumber());
@@ -49,7 +59,8 @@ public class AddNewCarScreen extends BaseScreen {
         inputPrice.sendKeys(car.getCity());
         inputPrice.sendKeys(car.getPricePerDay() + "");
         inputCarClass.sendKeys(car.getCarClass());
-        inputFuel.sendKeys(car.getFuel());
+        typeFuel(car.getFuel());
+//        inputFuel.sendKeys(car.getFuel());
         inputYear.sendKeys(car.getYear());
         inputSeats.sendKeys(Integer.toString(car.getSeats()));
         inputAbout.sendKeys(car.getAbout());
@@ -59,7 +70,7 @@ public class AddNewCarScreen extends BaseScreen {
         btnAddCar.click();
     }
 
-    public void tyeFuel(String fuel) {
+    public void typeFuel(String fuel) {
         inputFuel.click();
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(By

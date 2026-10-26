@@ -30,6 +30,4 @@ public class LoginScreen extends BaseScreen{
 }
 
 
-//com.telran.ilcarro:id/editLoginEmail
-//com.telran.ilcarro:id/editLoginPassword
-//com.telran.ilcarro:id/loginBtn
+
